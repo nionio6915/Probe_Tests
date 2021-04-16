@@ -1,0 +1,10 @@
+G90
+G1 X145 Y 145 Z50
+
+M106 P0 S1        ; start fan 100%
+M106 P1 S1        ; start fan 100%
+
+M303 H1 P1.0 S265 ; tune heater H1 using 100% PWM, target temperature 265C
+
+M106 S0 P0        ; disable tool fan
+M106 S0 P1        ; disable tool fan

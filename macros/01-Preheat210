@@ -1,0 +1,6 @@
+M80                 ; make sure printer is on
+T0                  ; Select Tool 0
+M140 S55            ; start bed heating at 50 and continue
+G10 P0 S210	R140	; Set extruder temp 190
+M190 S55            ; wait for bet to reach 50
+
