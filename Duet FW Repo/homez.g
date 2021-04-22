@@ -12,8 +12,6 @@ G90                                             ; absolute positioning
 M401 P0                                         ; This runs macro file deployprobe
 G1 X145 Y162.5 F9000                            ; go to first probe point
 M400
-; G30                                             ; home Z by probing the bed
-G1 H1 Z-15 
 G30 -2
 M400
 G4 P500
