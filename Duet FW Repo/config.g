@@ -15,6 +15,9 @@ M550 P"EV2"                                    ; set printer name
 ; M552 P192.168.2.20			               ; IP address
 ; M554 P192.168.2.1				               ; Gateway
 ; M553 P255.255.255.0				           ; Netmask
+M586 P0 S1                                     ; enable HTTP Protocol
+M586 P1 S1                                     ; enable FTP
+
 M552 S1
 
 
@@ -51,9 +54,9 @@ M350 X16 Y16 Z16 E16 I1                        ; configure microstepping with in
 
 M92 X80.00 Y80.00 Z800.00 E397                 ; set steps per mm
 
-M566 X900.00 Y900.00 Z12.00 E120.00            ; set maximum instantaneous speed changes (mm/min)
+M566 X1000.00 Y1000.00 Z12.00 E240.00          ; was 900 900 12 120 set maximum instantaneous speed changes (mm/min)
 M203 X18000.00 Y18000.00 Z600.00 E1200.00      ; set maximum speeds (mm/min)
-M201 X600.00 Y600.00 Z20.00 E500.00            ; set accelerations (mm/s^2)
+M201 X700.00 Y700.00 Z20.00 E500.00            ; was 600 600 20 500 set accelerations (mm/s^2)
 
 M906 X1200 Y1200 Z1000 E800 I30                ; set motor currents (mA) and motor idle factor in per cent
 
@@ -67,7 +70,7 @@ M84 S30                                        ; Set idle timeout
 
 ; Axis Limits
 M208 X0 Y0 Z0 S1                               ; Set axis minima
-M208 X293 Y325 Z280 S0                         ; Set axis maxima
+M208 X295 Y325 Z280 S0                         ; Set axis maxima
 
 ; Endstops
 ; X & Y endstops are at the MAX travel Z is at Z=0
@@ -103,7 +106,11 @@ M558 K0 P8 C"^zprobe.in" H10 R0.5 F240 T9000 A3 S0.03
                                                 ; H dive height of 8mm, F300 probing speed 6mm/sec, T9000 travel speed 150mm/sec,   
                                                 ; A3 number of probes 1, S0.01 max tolerance of 0.01 
                                                 ;
-G31 K0 P500 X-16.4 Y-29.27 Z4.50                ; CHECK for LOOSE things first! set Z probe trigger value, offset and trigger height.  
+G31 K0 P500 X-16.4 Y-29.27 Z2.95                ; for snap action switches DF2 etc
+; G31 K0 P500 X-16.4 Y-29.27 Z3.15                ; for snap action switches D3 etc
+
+; G31 K0 P500 X-16.4 Y-29.27 Z6.1                 ; for long plunger snap action switches
+                                                ; CHECK for LOOSE things first! set Z probe trigger value, offset and trigger height.  
                                                 ; Higher numbers makes nozzle closer to bed
                                                 ; switch plunger is 16.4mm to the LEFT and 29.27 in FRONT of the nozzle
 ; 
